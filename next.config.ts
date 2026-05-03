@@ -1,7 +1,9 @@
 import type {NextConfig} from 'next';
+import path from 'path';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  outputFileTracingRoot: __dirname,
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -29,6 +31,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**', 
       },
+      {
+        protocol: 'https',
+        hostname: 'i.pravatar.cc',
+        port: '',
+        pathname: '/**', 
+      },
     ],
   },
   output: 'standalone',
@@ -36,11 +44,11 @@ const nextConfig: NextConfig = {
   webpack: (config, {dev}) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      'cross-fetch': require('path').resolve(process.cwd(), 'lib/fetch-ponyfill.js'),
-      'whatwg-fetch': require('path').resolve(process.cwd(), 'lib/empty.js'),
+      'cross-fetch': path.resolve(__dirname, 'lib/fetch-ponyfill.js'),
+      'whatwg-fetch': path.resolve(__dirname, 'lib/empty.js'),
     };
     // HMR is disabled in AI Studio via DISABLE_HMR env var.
-    // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
+    // Do not modify—file watching is disabled to prevent flickering during agent edits.
     if (dev && process.env.DISABLE_HMR === 'true') {
       config.watchOptions = {
         ignored: /.*/,
