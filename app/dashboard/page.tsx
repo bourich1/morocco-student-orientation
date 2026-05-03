@@ -106,7 +106,7 @@ export default function Dashboard() {
     <div className="w-full pb-24">
       {/* Dashboard Header */}
       <div className="bg-[#0B1120]/40 backdrop-blur-xl border-b border-white/5 py-12 mb-12">
-        <div className="w-[90%] max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="w-[95%] md:w-[90%] max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-6">
             <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 rounded-3xl flex items-center justify-center">
                 <LayoutDashboard className="w-8 h-8" />
@@ -126,7 +126,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div className="w-[90%] max-w-[1400px] mx-auto space-y-12">
+      <div className="w-[95%] md:w-[90%] max-w-[1400px] mx-auto space-y-12">
         {/* Form Section - Now Full Width (90%) and Top-Centered */}
         <section className="flex justify-center">
             <div className="w-full bg-[#0B1120]/60 backdrop-blur-2xl rounded-[2.5rem] border border-white/5 p-10 md:p-14 shadow-2xl relative overflow-hidden group">

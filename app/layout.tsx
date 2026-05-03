@@ -35,7 +35,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           </main>
           
           <footer className="bg-[#030712] border-t border-white/5 py-12 mt-auto text-center relative z-20">
-            <div className="w-[90%] max-w-[1200px] mx-auto">
+            <div className="w-[95%] md:w-[90%] max-w-[1200px] mx-auto">
               <p className="text-[14px] text-slate-500 font-black tracking-widest uppercase mb-2">
                 توجيه المغرب • {new Date().getFullYear()}
               </p>

@@ -73,7 +73,7 @@ export default async function InstitutionPage({ params }: { params: Promise<{ sl
           <div className="absolute inset-0 bg-gradient-to-r from-[#030712]/40 to-transparent" />
         </div>
 
-        <div className="relative z-10 w-[90%] max-w-[1200px] mx-auto pb-16">
+        <div className="relative z-10 w-[95%] md:w-[90%] max-w-[1200px] mx-auto pb-16">
           <div className="flex flex-wrap items-center gap-3 mb-6">
             <Link href={`/category/${inst.category}`} className="px-4 py-1.5 rounded-full bg-emerald-500 text-slate-950 text-[12px] font-black uppercase tracking-widest hover:bg-emerald-400 transition-colors">
               {categoryLabel}
@@ -107,7 +107,7 @@ export default async function InstitutionPage({ params }: { params: Promise<{ sl
         <div className="absolute bottom-0 right-0 left-0 h-24 bg-gradient-to-t from-[#030712] to-transparent pointer-events-none" />
       </section>
 
-      <div className="w-[90%] max-w-[1200px] mx-auto mt-12">
+      <div className="w-[95%] md:w-[90%] max-w-[1200px] mx-auto mt-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Main Info Column */}
           <div className="lg:col-span-8 space-y-12">

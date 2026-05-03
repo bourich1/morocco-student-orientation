@@ -49,7 +49,7 @@ export default function Home() {
           <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-indigo-500/10 blur-[150px] rounded-full"></div>
         </div>
 
-        <div className="relative z-10 w-[90%] max-w-[1200px] mx-auto flex flex-col items-center text-center">
+        <div className="relative z-10 w-[95%] md:w-[90%] max-w-[1200px] mx-auto flex flex-col items-center text-center">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -63,7 +63,7 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-[48px] md:text-[80px] lg:text-[96px] font-black tracking-tight text-white mb-8 leading-[1] max-w-[1000px] drop-shadow-2xl"
+            className="text-[36px] sm:text-[48px] md:text-[80px] lg:text-[96px] font-black tracking-tight text-white mb-8 leading-[1] max-w-[1000px] drop-shadow-2xl"
           >
             بوصلة <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-indigo-400">توجيهك</span> في المغرب
           </motion.h1>
@@ -112,7 +112,7 @@ export default function Home() {
       </section>
 
       {/* Category Section */}
-      <section className="w-[90%] max-w-[1200px] mx-auto py-32 border-t border-white/5">
+      <section className="w-[95%] md:w-[90%] max-w-[1200px] mx-auto py-32 border-t border-white/5">
         <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
           <div className="max-w-[500px]">
             <h2 className="text-[32px] md:text-[48px] font-black text-white mb-4">استكشف حسب الفئة</h2>
@@ -164,7 +164,7 @@ export default function Home() {
       </section>
 
       {/* Simplified CTA Section */}
-      <section className="w-[90%] max-w-[1200px] mx-auto mb-32">
+      <section className="w-[95%] md:w-[90%] max-w-[1200px] mx-auto mb-32">
         <div className="relative rounded-[3rem] bg-gradient-to-br from-emerald-600 to-indigo-800 p-12 md:p-24 overflow-hidden text-center flex flex-col items-center">
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
             <div className="relative z-10">

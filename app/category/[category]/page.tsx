@@ -44,7 +44,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-500/10 blur-[120px] rounded-full opacity-50"></div>
         </div>
 
-        <div className="relative z-10 w-[90%] max-w-[1200px] mx-auto">
+        <div className="relative z-10 w-[95%] md:w-[90%] max-w-[1200px] mx-auto">
           <Link href="/" className="group inline-flex items-center gap-2 text-[13px] font-bold text-emerald-400 mb-8 hover:text-emerald-300 transition-colors">
             <ArrowRight className="w-4 h-4" /> العودة للرئيسية
           </Link>
@@ -67,7 +67,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
         </div>
       </section>
 
-      <section className="w-[90%] max-w-[1200px] mx-auto mt-12">
+      <section className="w-[95%] md:w-[90%] max-w-[1200px] mx-auto mt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {institutions && institutions.length > 0 ? (
             institutions.map((inst) => (
