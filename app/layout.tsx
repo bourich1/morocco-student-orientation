@@ -17,7 +17,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <body className={`${cairo.variable} font-sans min-h-screen flex flex-col bg-[#030712] text-slate-100 relative selection:bg-emerald-500/30 selection:text-emerald-200`} suppressHydrationWarning>
         <SmoothScroll>
           {/* Advanced Background System */}
-          <div className="fixed inset-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
+          <div className="fixed inset-0 w-full h-full pointer-events-none -z-10 overflow-hidden" suppressHydrationWarning>
             {/* Base Grid */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
             

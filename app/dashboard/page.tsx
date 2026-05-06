@@ -71,8 +71,12 @@ export default function Dashboard() {
   };
 
   const generateSlug = (name: string, city: string) => {
-    const combined = `${name} ${city}`;
-    return combined.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+    const randomSuffix = Math.random().toString(36).substring(2, 6);
+    const combined = `${name} ${city} ${randomSuffix}`;
+    // Support Arabic and Latin characters in slugs
+    return combined.toLowerCase()
+      .replace(/[^\u0600-\u06FFa-z0-9]+/g, '-')
+      .replace(/(^-|-$)+/g, '');
   };
 
   const handleError = (error: any) => {
