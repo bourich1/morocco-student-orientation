@@ -22,6 +22,7 @@ export default function Dashboard() {
   const [fieldsText, setFieldsText] = useState('');
 
   const [itemToDelete, setItemToDelete] = useState<string | null>(null);
+  const [formError, setFormError] = useState<string | null>(null);
 
   const fetchInstitutions = async () => {
     setLoading(true);
@@ -65,11 +66,22 @@ export default function Dashboard() {
     setIsEditing(inst.id);
     setFormData(inst);
     setFieldsText(inst.fields ? inst.fields.join(', ') : '');
+    setFormError(null);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const generateSlug = (name: string) => {
-    return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+  const generateSlug = (name: string, city: string) => {
+    const combined = `${name} ${city}`;
+    return combined.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+  };
+
+  const handleError = (error: any) => {
+    if (error.code === '23505') {
+      setFormError('هذه المؤسسة موجودة بالفعل (أو الاسم مستخدم). يرجى تغيير الاسم.');
+    } else {
+      setFormError(error.message);
+    }
+    setLoading(false);
   };
 
   const handleFormSubmit = async (e: React.FormEvent) => {
@@ -79,14 +91,17 @@ export default function Dashboard() {
     const fieldsArray = fieldsText.split(',').map(f => f.trim()).filter(Boolean);
     const payload = {
       ...formData,
-      slug: formData.slug || generateSlug(formData.name || ''),
+      slug: formData.slug || generateSlug(formData.name || '', formData.city || ''),
       fields: fieldsArray
     };
 
+    setFormError(null);
     if (isEditing) {
-      await supabase!.from('institutions').update(payload).eq('id', isEditing);
+      const { error } = await supabase!.from('institutions').update(payload).eq('id', isEditing);
+      if (error) return handleError(error);
     } else {
-      await supabase!.from('institutions').insert([payload]);
+      const { error } = await supabase!.from('institutions').insert([payload]);
+      if (error) return handleError(error);
     }
 
     setFormData({ name: '', slug: '', category: 'university', description: '', fields: [], city: '', image_url: '', apply_link: '' });
@@ -136,6 +151,12 @@ export default function Dashboard() {
                 {isEditing ? <Edit2 className="w-7 h-7 text-emerald-500"/> : <Plus className="w-7 h-7 text-emerald-500"/>}
                 {isEditing ? 'تعديل بيانات المؤسسة' : 'إضافة مؤسسة جديدة'}
               </h2>
+
+              {formError && (
+                <div className="mb-8 p-4 bg-red-500/10 text-red-400 text-[13px] font-bold rounded-2xl border border-red-500/20 animate-in fade-in slide-in-from-top-2 relative z-10" dir="rtl">
+                  ⚠️ {formError}
+                </div>
+              )}
 
               <form onSubmit={handleFormSubmit} className="space-y-8 relative z-10" dir="rtl">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -196,7 +217,7 @@ export default function Dashboard() {
                     {isEditing ? 'حفظ التغييرات' : 'إنشاء المؤسسة'}
                   </button>
                   {isEditing && (
-                    <button type="button" onClick={() => { setIsEditing(null); setFormData({ category: 'university' }); setFieldsText(''); }} className="px-10 h-16 bg-white/5 border border-white/10 rounded-2xl text-slate-300 text-[15px] font-bold hover:bg-white/10 transition-all">
+                    <button type="button" onClick={() => { setIsEditing(null); setFormData({ category: 'university' }); setFieldsText(''); setFormError(null); }} className="px-10 h-16 bg-white/5 border border-white/10 rounded-2xl text-slate-300 text-[15px] font-bold hover:bg-white/10 transition-all">
                       إلغاء
                     </button>
                   )}
