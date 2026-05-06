@@ -1,4 +1,4 @@
-import { supabase, isSupabaseConfigured, CATEGORIES } from '@/lib/supabase';
+import { supabase, isSupabaseConfigured, CATEGORIES, DEFAULT_INSTITUTION_IMAGE } from '@/lib/supabase';
 import { SetupRequired } from '@/components/SetupRequired';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -61,7 +61,7 @@ export default async function InstitutionPage({ params }: { params: Promise<{ sl
       <section className="relative w-full h-[60vh] min-h-[500px] flex items-end">
         <div className="absolute inset-0 z-0">
           <Image 
-            src={inst.image_url || `https://picsum.photos/seed/${inst.id}/1920/1080`} 
+            src={inst.image_url || DEFAULT_INSTITUTION_IMAGE} 
             alt={inst.name} 
             fill 
             className="object-cover" 

@@ -8,10 +8,10 @@ export function Navbar() {
         <Link href="/" className="flex items-center gap-3 group transition-transform hover:scale-[1.02] active:scale-95">
           <div className="relative w-28 h-10 sm:w-36 sm:h-14">
             <Image 
-              src="/lycee-logo.png" 
+              src="/logo-white.png" 
               alt="Logo" 
               fill 
-              className="object-contain filter brightness-110"
+              className="object-contain"
               referrerPolicy="no-referrer"
               priority
             />

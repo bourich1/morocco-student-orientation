@@ -5,6 +5,8 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
 export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
 
+export const DEFAULT_INSTITUTION_IMAGE = 'https://www.toptenz.net/wp-content/uploads/2015/05/nudges7.jpg';
+
 export const supabase = isSupabaseConfigured
   ? createClient(supabaseUrl, supabaseAnonKey)
   : null;
