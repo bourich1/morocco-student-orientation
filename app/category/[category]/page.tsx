@@ -1,4 +1,4 @@
-import { supabase, isSupabaseConfigured, CATEGORIES } from '@/lib/supabase';
+import { supabase, isSupabaseConfigured, CATEGORIES, DEFAULT_INSTITUTION_IMAGE } from '@/lib/supabase';
 import { SetupRequired } from '@/components/SetupRequired';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -78,7 +78,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
               >
                 <div className="aspect-video relative overflow-hidden flex-shrink-0">
                   <Image 
-                    src={inst.image_url || `https://picsum.photos/seed/${inst.id}/800/450`} 
+                    src={inst.image_url || DEFAULT_INSTITUTION_IMAGE} 
                     alt={inst.name} 
                     fill 
                     className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" 

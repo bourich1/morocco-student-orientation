@@ -1,7 +1,7 @@
 'use client';
 
 import { HomeClient } from '@/components/HomeClient';
-import { CATEGORIES } from '@/lib/supabase';
+import { CATEGORIES, DEFAULT_INSTITUTION_IMAGE } from '@/lib/supabase';
 import { ArrowLeft, BookOpen, GraduationCap, Building2, Briefcase, Microscope, Palette } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -131,7 +131,7 @@ export default function Home() {
               >
                 <div className="aspect-[16/10] relative overflow-hidden flex-shrink-0">
                   <Image 
-                    src={`https://picsum.photos/seed/${cat.id}/800/600`} 
+                    src={DEFAULT_INSTITUTION_IMAGE} 
                     alt={cat.label} 
                     fill 
                     className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" 

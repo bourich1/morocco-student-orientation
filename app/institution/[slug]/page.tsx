@@ -221,7 +221,7 @@ export default async function InstitutionPage({ params }: { params: Promise<{ sl
                 <Link key={rel.slug} href={`/institution/${rel.slug}`} className="group relative bg-[#0B1120]/40 rounded-3xl border border-white/5 overflow-hidden transition-all hover:border-emerald-500/30 hover:-translate-y-2">
                   <div className="aspect-video relative overflow-hidden">
                     <Image 
-                      src={rel.image_url || `https://picsum.photos/seed/${rel.slug}/400/225`} 
+                      src={rel.image_url || DEFAULT_INSTITUTION_IMAGE} 
                       alt={rel.name} 
                       fill 
                       className="object-cover group-hover:scale-110 transition-transform duration-500 grayscale group-hover:grayscale-0" 
