@@ -177,16 +177,7 @@ export default function Dashboard() {
                             dir="ltr"
                         />
                     </div>
-                    <div className="space-y-2">
-                        <label className="block text-[12px] font-black uppercase tracking-widest text-slate-500 mr-2">رابط التقديم</label>
-                        <input 
-                            type="url" value={formData.apply_link} 
-                            onChange={(e) => setFormData({...formData, apply_link: e.target.value})}
-                            className="w-full h-14 px-6 bg-white/5 border border-white/5 rounded-2xl text-white text-[15px] font-medium focus:border-emerald-500/50 outline-none transition-all placeholder:text-slate-700 text-left" 
-                            placeholder="https://..."
-                            dir="ltr"
-                        />
-                    </div>
+                    {/* Removed apply_link input */}
                     <div className="space-y-2">
                         <label className="block text-[12px] font-black uppercase tracking-widest text-slate-500 mr-2">التخصصات (مفصولة بفاصلة)</label>
                         <input 

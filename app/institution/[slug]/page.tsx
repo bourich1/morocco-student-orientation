@@ -180,20 +180,7 @@ export default async function InstitutionPage({ params }: { params: Promise<{ sl
                 </div>
 
                 <div className="space-y-3 relative z-10">
-                    {inst.apply_link ? (
-                      <a 
-                        href={inst.apply_link.startsWith('http') ? inst.apply_link : `https://${inst.apply_link}`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="w-full inline-flex items-center justify-center gap-3 bg-slate-950 text-white h-16 rounded-2xl font-black text-[16px] hover:bg-slate-800 transition shadow-xl group"
-                      >
-                        قدم طلبك الآن <ExternalLink className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                      </a>
-                    ) : (
-                      <div className="w-full inline-flex items-center justify-center bg-slate-100 text-slate-400 h-16 rounded-2xl font-black text-[16px] cursor-not-allowed border border-slate-200">
-                        التسجيل مغلق حالياً
-                      </div>
-                    )}
+                    {/* Removed apply button logic */}
                     
                     <ShareButton 
                         title={`المؤسسة: ${inst.name}`} 
