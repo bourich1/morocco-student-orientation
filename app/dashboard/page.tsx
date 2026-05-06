@@ -140,7 +140,7 @@ export default function Dashboard() {
               <form onSubmit={handleFormSubmit} className="space-y-8 relative z-10" dir="rtl">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="space-y-2">
-                        <label className="block text-[12px] font-black uppercase tracking-widest text-slate-500 mr-2">اسم المؤسسة</label>
+                        <label className="block text-[12px] font-black uppercase tracking-widest text-slate-500 mr-2">اسم المؤسسة <span className="text-red-500">*</span></label>
                         <input 
                             type="text" required value={formData.name} 
                             onChange={(e) => setFormData({...formData, name: e.target.value})}
@@ -149,7 +149,7 @@ export default function Dashboard() {
                         />
                     </div>
                     <div className="space-y-2">
-                        <label className="block text-[12px] font-black uppercase tracking-widest text-slate-500 mr-2">المدينة</label>
+                        <label className="block text-[12px] font-black uppercase tracking-widest text-slate-500 mr-2">المدينة <span className="text-red-500">*</span></label>
                         <input 
                             type="text" required value={formData.city} 
                             onChange={(e) => setFormData({...formData, city: e.target.value})}
@@ -167,16 +167,7 @@ export default function Dashboard() {
                             {CATEGORIES.map(c => <option key={c.id} value={c.id} className="bg-[#030712]">{c.label}</option>)}
                         </select>
                     </div>
-                    <div className="space-y-2">
-                        <label className="block text-[12px] font-black uppercase tracking-widest text-slate-500 mr-2">رابط الصورة (URL)</label>
-                        <input 
-                            type="url" value={formData.image_url} 
-                            onChange={(e) => setFormData({...formData, image_url: e.target.value})}
-                            className="w-full h-14 px-6 bg-white/5 border border-white/5 rounded-2xl text-white text-[15px] font-medium focus:border-emerald-500/50 outline-none transition-all placeholder:text-slate-700 text-left" 
-                            placeholder="https://..."
-                            dir="ltr"
-                        />
-                    </div>
+                    {/* Removed image_url input */}
                     {/* Removed apply_link input */}
                     <div className="space-y-2">
                         <label className="block text-[12px] font-black uppercase tracking-widest text-slate-500 mr-2">التخصصات (مفصولة بفاصلة)</label>
