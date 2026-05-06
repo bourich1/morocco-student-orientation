@@ -193,7 +193,7 @@ export default function Dashboard() {
                 <div className="space-y-2">
                     <label className="block text-[12px] font-black uppercase tracking-widest text-slate-500 mr-2">الوصف</label>
                     <textarea 
-                        required value={formData.description} 
+                        value={formData.description} 
                         onChange={(e) => setFormData({...formData, description: e.target.value})}
                         className="w-full p-6 bg-white/5 border border-white/5 rounded-2xl text-white text-[15px] font-medium focus:border-emerald-500/50 outline-none transition-all placeholder:text-slate-700 min-h-[120px]" 
                         placeholder="اكتب وصفاً مختصراً للمؤسسة..."
