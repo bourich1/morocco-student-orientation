@@ -11,10 +11,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   if (!isSupabaseConfigured) return { title: 'توجيه المغرب' };
   
+  const decodedSlug = decodeURIComponent(slug);
   const { data: inst } = await supabase!
     .from('institutions')
     .select('name, description, city')
-    .eq('slug', slug)
+    .eq('slug', decodedSlug)
     .single();
 
   if (!inst) {
@@ -34,15 +35,29 @@ export default async function InstitutionPage({ params }: { params: Promise<{ sl
     return <SetupRequired />;
   }
 
+  const decodedSlug = decodeURIComponent(slug);
   // Fetch institution
   const { data: inst, error } = await supabase!
     .from('institutions')
     .select('*')
-    .eq('slug', slug)
+    .eq('slug', decodedSlug)
     .single();
 
   if (error || !inst) {
-    notFound();
+    return (
+      <div className="w-full min-h-[60vh] flex flex-col items-center justify-center p-8 text-center" dir="rtl">
+        <h1 className="text-3xl font-black text-red-500 mb-4">خطأ في جلب البيانات (404)</h1>
+        <p className="text-slate-400 mb-4">الرابط الذي تبحث عنه غير موجود في قاعدة البيانات.</p>
+        <div className="bg-[#0B1120] p-6 rounded-2xl border border-white/10 max-w-2xl text-left" dir="ltr">
+            <p className="text-emerald-400 font-mono text-sm mb-2">Searched Slug: {decodedSlug}</p>
+            {error && <p className="text-red-400 font-mono text-sm mb-2">Supabase Error: {error.message}</p>}
+            <p className="text-slate-500 font-mono text-xs">If you just edited this institution, please go back to the dashboard and click the preview link again. Old links will stop working when you change the slug.</p>
+        </div>
+        <Link href="/dashboard" className="mt-8 px-6 py-3 bg-emerald-500 text-slate-950 font-bold rounded-xl hover:bg-emerald-400 transition-colors">
+            العودة للوحة التحكم
+        </Link>
+      </div>
+    );
   }
 
   const categoryLabel = CATEGORIES.find(c => c.id === inst.category)?.label || inst.category;

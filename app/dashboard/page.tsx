@@ -72,10 +72,12 @@ export default function Dashboard() {
 
   const generateSlug = (name: string, city: string) => {
     const randomSuffix = Math.random().toString(36).substring(2, 6);
-    const combined = `${name} ${city} ${randomSuffix}`;
-    // Support Arabic and Latin characters in slugs
-    return combined.toLowerCase()
-      .replace(/[^\u0600-\u06FFa-z0-9]+/g, '-')
+    const combined = `${name}-${city}-${randomSuffix}`;
+    // Allow Arabic, English letters, numbers, and dashes. Remove multiple dashes.
+    return combined
+      .replace(/\s+/g, '-')
+      .replace(/[^\u0600-\u06FFa-zA-Z0-9-]/g, '')
+      .replace(/-+/g, '-')
       .replace(/(^-|-$)+/g, '');
   };
 
@@ -182,6 +184,7 @@ export default function Dashboard() {
                             placeholder="الرباط"
                         />
                     </div>
+                    {/* Slug input removed */}
                     <div className="space-y-2">
                         <label className="block text-[12px] font-black uppercase tracking-widest text-slate-500 mr-2">الفئة</label>
                         <select 
@@ -221,7 +224,7 @@ export default function Dashboard() {
                     {isEditing ? 'حفظ التغييرات' : 'إنشاء المؤسسة'}
                   </button>
                   {isEditing && (
-                    <button type="button" onClick={() => { setIsEditing(null); setFormData({ category: 'university' }); setFieldsText(''); setFormError(null); }} className="px-10 h-16 bg-white/5 border border-white/10 rounded-2xl text-slate-300 text-[15px] font-bold hover:bg-white/10 transition-all">
+                    <button type="button" onClick={() => { setIsEditing(null); setFormData({ name: '', slug: '', category: 'university', description: '', fields: [], city: '', image_url: '', apply_link: '' }); setFieldsText(''); setFormError(null); }} className="px-10 h-16 bg-white/5 border border-white/10 rounded-2xl text-slate-300 text-[15px] font-bold hover:bg-white/10 transition-all">
                       إلغاء
                     </button>
                   )}
@@ -280,9 +283,14 @@ export default function Dashboard() {
                                                         <Building2 className="text-slate-600 w-5 h-5" />
                                                     )}
                                                 </div>
-                                                <span className="font-black text-[15px] text-white group-hover:text-emerald-400 transition-colors truncate max-w-[300px]">
-                                                    {inst.name}
-                                                </span>
+                                                <div className="flex flex-col">
+                                                    <span className="font-black text-[15px] text-white group-hover:text-emerald-400 transition-colors truncate max-w-[300px]">
+                                                        {inst.name}
+                                                    </span>
+                                                    <span className="text-[11px] text-slate-500 font-mono mt-1" dir="ltr">
+                                                        /{inst.slug}
+                                                    </span>
+                                                </div>
                                             </div>
                                         </td>
                                         <td className="px-8 py-6">
